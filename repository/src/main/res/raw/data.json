@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "logo": "file:///android_asset/images/chicago/chicago_symbol.png",
+    "login": "city_chicago",
+    "location": "Chicago - U.S. state of Illinois",
+    "images": [
+      "file:///android_asset/images/chicago/chicago_1.jpg",
+      "file:///android_asset/images/chicago/chicago_2.jpg"
+    ],
+    "likes": [
+      "milena_trump",
+      "lenka_1994",
+      "masha_iv",
+      "serge_grin",
+      "ken_sims",
+      "leo_murray",
+      "alex_elliott",
+      "anna_allen"
+    ],
+    "hashTags": [
+      "@anna_zavadska",
+      "@c@covernumbone",
+      "#thebrowbarkharkov",
+      "#makeup"
+    ],
+    "lastVisit": "3 HOURS AGO"
+  },
+
+  {
+    "id": 2,
+    "logo": "file:///android_asset/images/madrid/madrid_symbol.png",
+    "login": "city_madrid",
+    "location": "Madrid - The capital of Spain",
+    "images": [
+      "file:///android_asset/images/madrid/madrid_1.jpg",
+      "file:///android_asset/images/madrid/madrid_2.jpg"
+    ],
+    "likes": [
+      "joyce_gray",
+      "cate_shelton",
+      "darlene_roberts",
+      "felicia_stanley"
+    ],
+    "hashTags": [
+      "@kurt_reynolds",
+      "@d#ean_douglas",
+      "#gregorywoods"
+    ],
+    "lastVisit": "5 HOURS AGO"
+  }
+]

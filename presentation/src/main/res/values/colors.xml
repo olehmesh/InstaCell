@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#eceff1</color>
+    <color name="colorPrimaryDark">#eceff1</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="color_border_civ">#161C1C</color>
+    <color name="color_login_name">#020707</color>
+    <color name="bottom_nav_color">#E3E8E8</color>
+
+    <color name="bottom_nav_tint">#221F1F</color>
+    <color name="hash_tags_text_color">#0D26A1</color>
+
+</resources>

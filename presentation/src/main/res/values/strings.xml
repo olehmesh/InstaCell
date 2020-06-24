@@ -1,0 +1,22 @@
+<resources>
+
+    <string name="app_name">Instagram</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="add">Add</string>
+    <string name="favorites">Favorites</string>
+    <string name="account">Account</string>
+    <string name="login">Login</string>
+    <string name="location">Location</string>
+    <string name="liked_by">Liked by\u0020</string>
+    <string name="and">\u0020and\u0020</string>
+    <string name="others">\u0020others</string>
+    <string name="beauty">Beauty\u0020</string>
+    <string name="milena_browbar">milena_browbar\u0020</string>
+    <string name="comma">,</string>
+    <string name="click_to_favorite">Clicked to Favorite\u0020</string>
+    <string name="click_to_comment">Clicked to Comment\u0020</string>
+    <string name="click_to_send">Clicked to Send\u0020</string>
+    <string name="click_to_bookmark">Clicked to Bookmark\u0020</string>
+
+</resources>

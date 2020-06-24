@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimaryDark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ToolbarContentColor" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/bottom_nav_tint</item>
+    </style>
+
+
+    <style name="EmptyFragmentsTextStyle">
+        <item name="android:textSize">@dimen/text_size_empty_fragments</item>
+        <item name="android:textColor">@color/bottom_nav_tint</item>
+        <item name="android:fontFamily">@font/round_corners</item>
+    </style>
+
+</resources>
