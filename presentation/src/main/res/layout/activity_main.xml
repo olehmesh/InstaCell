@@ -69,7 +69,6 @@
             android:background="@color/bottom_nav_color"
             app:itemIconTint="@color/bottom_nav_tint"
             app:labelVisibilityMode="unlabeled"
-
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             app:menu="@menu/bottom_nav_menu" />
