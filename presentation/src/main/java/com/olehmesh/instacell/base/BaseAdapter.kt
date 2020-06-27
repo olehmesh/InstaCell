@@ -4,16 +4,18 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseAdapter<T, VH : RecyclerView.ViewHolder> : RecyclerView.Adapter<VH>() {
 
-    private var array = mutableListOf<T>()
-
-    override fun getItemCount(): Int = this.array.size
+    private var itemList = mutableListOf<T>()
 
     fun setData(items: List<T>) {
-        this.array.addAll(items)
+        itemList.clear()
+        itemList.addAll(items)
     }
 
-    fun getItem(i: Int): T = this.array[i]
+    override fun getItemCount(): Int = itemList.size
 
-    fun getItems(): List<T> = this.array
+    fun getItem(i: Int): T = itemList[i]
+
+    fun getItemList(): List<T> = itemList
+
 
 }

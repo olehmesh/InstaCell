@@ -1,21 +1,23 @@
-package com.olehmesh.instacell.adapters
+package com.olehmesh.instacell.adapters.pagination
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.olehmesh.instacell.R
-import com.olehmesh.instacell.base.BaseAdapter
-import com.olehmesh.instacell.base.BaseDiffUtil
+import com.olehmesh.instacell.adapters.view_pager.ViewPagerTransformer
+import com.olehmesh.instacell.adapters.view_pager.ViewPagerAdapter
 import com.olehmesh.instacell.databinding.ListItemBinding
 import com.olehmesh.instacell.extensions.toast
 import com.olehmesh.repository.InstCellModel
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class MainAdapter :
-    BaseAdapter<InstCellModel, MainAdapter.ViewHolder>() {
+class PaginationAdapter :
+    PagedListAdapter<InstCellModel, PaginationAdapter.ViewHolder>(
+        DiffUtilCallBack()
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
@@ -28,7 +30,9 @@ class MainAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        if (item != null) {
+            holder.bind(item)
+        }
 
         val context = holder.itemView.context
 
@@ -41,7 +45,7 @@ class MainAdapter :
     class ViewHolder(private val binding: ListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        private val pageAdapter = PageAdapter()
+        private val pageAdapter by lazy { ViewPagerAdapter() }
 
 
         fun bind(item: InstCellModel) {
@@ -49,22 +53,34 @@ class MainAdapter :
             binding.model = item
             binding.viewPager2.adapter = pageAdapter
 
-            binding.viewPager2.addItemDecoration(DividerItemDecoration(itemView.context, RecyclerView.HORIZONTAL))
+            binding.viewPager2.setPageTransformer(ViewPagerTransformer())
             binding.viewPager2.registerOnPageChangeCallback(object :
                 ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
 
-                        binding.pageIndicator.count = pageAdapter.itemCount
-                        binding.pageIndicator.selection = position
+                    binding.pageIndicator.count = pageAdapter.itemCount
+                    binding.pageIndicator.selection = position
+
                 }
+
             })
 
-            val diffUtil = BaseDiffUtil(pageAdapter.getItems(), item.images)
-            val result = DiffUtil.calculateDiff(diffUtil)
-            pageAdapter.setData(item.images)
-            result.dispatchUpdatesTo(pageAdapter)
+            pageAdapter.setData(item.images!!)
             binding.pageIndicator.count = pageAdapter.itemCount
+            binding.executePendingBindings()
         }
     }
+
+
+    class DiffUtilCallBack : DiffUtil.ItemCallback<InstCellModel>() {
+        override fun areItemsTheSame(oldItem: InstCellModel, newItem: InstCellModel): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: InstCellModel, newItem: InstCellModel): Boolean {
+            return oldItem == newItem
+        }
+    }
+
 }

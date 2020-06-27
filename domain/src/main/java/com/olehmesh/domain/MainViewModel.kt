@@ -1,41 +1,45 @@
 package com.olehmesh.domain
 
-import android.app.Application
-import android.content.Context
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.paging.*
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.olehmesh.repository.InstCellModel
+import com.olehmesh.repository.DataSourcePagination
 import kotlinx.coroutines.*
 
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+class MainViewModel : ViewModel() {
 
-    private val data = MutableLiveData<List<InstCellModel>>()
-    var context: Context = getApplication()
-    private val jsonObj = Gson()
-    private val scope = CoroutineScope(Job())
-    private val arrayType = object : TypeToken<List<InstCellModel>>() {}.type
+    private var liveData: LiveData<PagedList<InstCellModel>>
 
     init {
-        getRawData()
+        val config = PagedList.Config.Builder()
+            .setPageSize(10)
+            .setEnablePlaceholders(false)
+            .build()
+
+        liveData = initPagedList(config).build()
+
     }
 
-    private fun getRawData() {
+    fun getData(): LiveData<PagedList<InstCellModel>> = liveData
 
-        scope.launch(Dispatchers.Main) {
-                val br =
-                    context.resources.openRawResource(R.raw.data).bufferedReader()
-                        .use { it.readText() }
-                data.value = jsonObj.fromJson(br, arrayType)
+
+    private fun initPagedList(config: PagedList.Config): LivePagedListBuilder<String, InstCellModel> {
+
+        val dataSourceFactory = object : DataSource.Factory<String, InstCellModel>() {
+
+            override fun create(): DataSource<String, InstCellModel> {
+
+                return DataSourcePagination(Dispatchers.IO)
+
+            }
         }
-    }
 
-    fun getData(): MutableLiveData<List<InstCellModel>> = data
+        return LivePagedListBuilder(dataSourceFactory, config)
+
+    }
 
 }
-
-
-
-

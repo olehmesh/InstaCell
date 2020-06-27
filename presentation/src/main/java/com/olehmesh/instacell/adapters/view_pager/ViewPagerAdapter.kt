@@ -1,4 +1,4 @@
-package com.olehmesh.instacell.adapters
+package com.olehmesh.instacell.adapters.view_pager
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.olehmesh.instacell.base.BaseAdapter
 import com.olehmesh.instacell.databinding.ViewPagerItemBinding
 
-class PageAdapter:
-    BaseAdapter<String, PageAdapter.ViewHolder>() {
+class ViewPagerAdapter :
+    BaseAdapter<String, ViewPagerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
@@ -19,7 +19,10 @@ class PageAdapter:
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+
+        val item = getItem(position)
+        holder.bind(item)
+
     }
 
     class ViewHolder(private val binding: ViewPagerItemBinding) :
@@ -28,4 +31,5 @@ class PageAdapter:
             binding.imageAsset = item
         }
     }
+
 }

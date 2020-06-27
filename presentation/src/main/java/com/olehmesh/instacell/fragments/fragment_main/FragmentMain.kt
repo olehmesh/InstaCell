@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DiffUtil
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.olehmesh.instacell.R
-import com.olehmesh.instacell.adapters.MainAdapter
-import com.olehmesh.instacell.base.BaseDiffUtil
+import com.olehmesh.instacell.adapters.pagination.PaginationAdapter
 import com.olehmesh.instacell.base.BaseFragment
 import com.olehmesh.repository.InstCellModel
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -28,16 +27,18 @@ class FragmentMain : BaseFragment() {
 
     }
 
-    private fun initRecyclerView(items: List<InstCellModel>) {
+    private fun initRecyclerView(items: PagedList<InstCellModel>) {
 
-        val adapter = MainAdapter()
-        val diffUtil = BaseDiffUtil(adapter.getItems(), items)
-        val resultCalc = DiffUtil.calculateDiff(diffUtil)
+        val adapter = PaginationAdapter()
         recyclerView.layoutManager = LinearLayoutManager(context)
+        adapter.submitList(items)
         recyclerView.adapter = adapter
-        adapter.setData(items)
-        resultCalc.dispatchUpdatesTo(adapter)
-        recyclerView.addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                this.context,
+                DividerItemDecoration.VERTICAL
+            )
+        )
 
     }
 
