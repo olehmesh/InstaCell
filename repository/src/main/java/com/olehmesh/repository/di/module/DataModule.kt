@@ -4,7 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.olehmesh.repository.di.scope.DataScope
-import com.olehmesh.repository.InstCellModel
+import com.olehmesh.repository.models.InstCellModel
 import com.olehmesh.repository.R
 import dagger.Module
 import dagger.Provides

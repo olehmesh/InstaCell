@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.*
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.olehmesh.repository.InstCellModel
-import com.olehmesh.repository.DataSourcePagination
+import com.olehmesh.repository.models.InstCellModel
+import com.olehmesh.repository.PaginationDataSource
 import kotlinx.coroutines.*
 
 
@@ -33,7 +33,7 @@ class MainViewModel : ViewModel() {
 
             override fun create(): DataSource<String, InstCellModel> {
 
-                return DataSourcePagination(Dispatchers.IO)
+                return PaginationDataSource(Dispatchers.IO)
 
             }
         }

@@ -11,7 +11,7 @@ import com.olehmesh.instacell.adapters.view_pager.ViewPagerTransformer
 import com.olehmesh.instacell.adapters.view_pager.ViewPagerAdapter
 import com.olehmesh.instacell.databinding.ListItemBinding
 import com.olehmesh.instacell.extensions.toast
-import com.olehmesh.repository.InstCellModel
+import com.olehmesh.repository.models.InstCellModel
 import kotlinx.android.synthetic.main.list_item.view.*
 
 class PaginationAdapter :

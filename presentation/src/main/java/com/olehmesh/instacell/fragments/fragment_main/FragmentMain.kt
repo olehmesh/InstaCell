@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.olehmesh.instacell.R
 import com.olehmesh.instacell.adapters.pagination.PaginationAdapter
 import com.olehmesh.instacell.base.BaseFragment
-import com.olehmesh.repository.InstCellModel
+import com.olehmesh.repository.models.InstCellModel
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class FragmentMain : BaseFragment() {

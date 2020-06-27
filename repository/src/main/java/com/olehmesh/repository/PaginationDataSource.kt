@@ -2,13 +2,14 @@ package com.olehmesh.repository
 
 import androidx.paging.ItemKeyedDataSource
 import com.olehmesh.repository.di.App
+import com.olehmesh.repository.models.InstCellModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class DataSourcePagination(context: CoroutineContext) :
+class PaginationDataSource(context: CoroutineContext) :
     ItemKeyedDataSource<String, InstCellModel>() {
 
     private val job = Job()
@@ -40,10 +41,7 @@ class DataSourcePagination(context: CoroutineContext) :
     }
 
     override fun loadBefore(params: LoadParams<String?>, callback: LoadCallback<InstCellModel?>) {
-        scope.launch {
-            callback.onResult(data)
-        }
-
+        // leave empty (scroll from top to down)
     }
 
     override fun getKey(item: InstCellModel): String {

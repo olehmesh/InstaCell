@@ -5,7 +5,7 @@
     <data>
         <variable
             name="model"
-            type="com.olehmesh.repository.InstCellModel" />
+            type="com.olehmesh.repository.models.InstCellModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

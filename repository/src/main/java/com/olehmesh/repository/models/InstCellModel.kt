@@ -1,4 +1,4 @@
-package com.olehmesh.repository
+package com.olehmesh.repository.models
 
 data class InstCellModel(
     val id: Int?,
