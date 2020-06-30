@@ -30,15 +30,18 @@ class FragmentMain : BaseFragment() {
     private fun initRecyclerView(items: PagedList<InstCellModel>) {
 
         val adapter = PaginationAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        adapter.submitList(items)
-        recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                this.context,
-                DividerItemDecoration.VERTICAL
+
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(
+                DividerItemDecoration(
+                    this.context,
+                    DividerItemDecoration.VERTICAL
+                )
             )
-        )
+            adapter.submitList(items)
+            recyclerView.adapter = adapter
+        }
 
     }
 
