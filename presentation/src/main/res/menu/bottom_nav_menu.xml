@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom"
         android:title="@string/home" />
     <item
         android:id="@+id/search"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/ic_search"
+        android:enabled="true"
         android:title="@string/search" />
     <item
         android:id="@+id/add"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
         android:icon="@drawable/ic_add"
         android:title="@string/add" />
     <item
         android:id="@+id/favorites"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
         android:icon="@drawable/ic_favorites"
         android:title="@string/favorites" />
     <item
         android:id="@+id/account"
+        app:showAsAction="ifRoom"
         android:icon="@drawable/ic_account_circle"
         android:title="@string/account" />
 </menu>
