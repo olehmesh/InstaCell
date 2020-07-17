@@ -5,11 +5,11 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.olehmesh.instacell.R
 import com.olehmesh.instacell.adapters.pagination.PaginationAdapter
 import com.olehmesh.instacell.base.BaseFragment
+import com.olehmesh.instacell.extensions.itemDecorate
 import com.olehmesh.repository.models.InstCellModel
 import kotlinx.android.synthetic.main.fragment_main.*
 
@@ -29,20 +29,15 @@ class FragmentMain : BaseFragment() {
 
     private fun initRecyclerView(items: PagedList<InstCellModel>) {
 
-        val adapter = PaginationAdapter()
+        val paginationAdapter = PaginationAdapter()
 
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            addItemDecoration(
-                DividerItemDecoration(
-                    this.context,
-                    DividerItemDecoration.VERTICAL
-                )
-            )
-            adapter.submitList(items)
-            recyclerView.adapter = adapter
+            adapter = paginationAdapter
+            itemDecorate()
         }
 
+        paginationAdapter.submitList(items)
     }
 
 }
